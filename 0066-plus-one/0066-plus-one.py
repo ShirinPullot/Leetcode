@@ -1,10 +1,11 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        number =''
-        for num in digits:
-          number += str(num)
-        increment_no = int(number)+1
-        new_list = []
-        for no in str(increment_no):
-          new_list.append(int(no))
-        return new_list
+        length = len(digits) - 1
+        while digits[length] == 9:
+            digits[length] = 0
+            length -= 1
+        if(length < 0):
+            digits = [1] + digits
+        else:
+            digits[length] += 1
+        return digits
